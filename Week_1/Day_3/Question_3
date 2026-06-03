@@ -1,0 +1,24 @@
+class Solution {
+    public int maxArea(int[] height) {
+        int l = 0;
+        int r = height.length - 1;
+        int max_wat = 0;
+        int len = 0;
+
+
+
+        while(l < r)
+        {
+            len = (height[l] > height[r]) ? height[r] : height[l];
+
+            max_wat = (max_wat > (len * (r - l)))? max_wat:(len * (r - l));
+
+            if(height[l] > height[r])
+                r--;
+            else
+                l++;
+        }
+
+        return max_wat;
+    }
+}
