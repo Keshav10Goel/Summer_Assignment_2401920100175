@@ -1,0 +1,25 @@
+class Solution {
+    public boolean isPalindrome(String s) {
+        s=s.trim();
+        s=s.toLowerCase();
+        int st=0;
+        
+        char c1=' ',c2=' ';
+        int la=s.length()-1;
+        while(st<la)
+        {
+            
+            while(st<la && (!Character.isLetterOrDigit(s.charAt(st)))  )
+            st++;
+            
+            while(st<la && (!Character.isLetterOrDigit(s.charAt(la))))
+            la--;
+            if(s.charAt(st)!=s.charAt(la))
+                return false;
+            st++;
+            la--;
+
+        }
+    return true;
+    }
+}
