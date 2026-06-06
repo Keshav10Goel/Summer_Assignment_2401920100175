@@ -1,0 +1,43 @@
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        if (strs == null || strs.length == 0)
+            return "";
+
+        int s = strs[0].length();
+        int sm = 0;
+
+        // find the smallest string
+        for (int x = 0; x < strs.length; x++) {
+            if (strs[x].length() < s) {
+                s = strs[x].length();
+                sm = x;
+            }
+        }
+
+        int i = 1;
+        int l = strs.length;
+        String str = "";
+
+        while (i <= s) {
+            str = strs[sm].substring(0, i);
+            boolean mismatch = false;
+
+            for (int j = 0; j < l; j++) {
+                if (!strs[j].startsWith(str)) {
+                    mismatch = true;
+                    break;
+                }
+            }
+
+            if (mismatch)
+                break;
+
+            i++;
+        }
+
+        if (i == 1)
+            return "";
+
+        return strs[sm].substring(0, i - 1);
+    }
+}
