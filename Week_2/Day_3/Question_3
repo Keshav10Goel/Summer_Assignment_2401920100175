@@ -1,0 +1,19 @@
+//Repeated Substring Pattern
+class Solution {
+    public boolean repeatedSubstringPattern(String s) {
+       
+        for(int i=s.length()/2;i>0;i--)
+        if(s.length()%(i)==0)
+        {   String t="";
+            String pat="";
+            int f=s.length()/i;
+            pat=s.substring(0,i);
+            for(int j=1;j<=f;j++)
+            t+=pat;
+            if(t.equals(s))
+            return true;
+        }
+        return false;
+
+    }
+}
