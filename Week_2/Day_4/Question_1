@@ -1,0 +1,17 @@
+// Reverse Word in String III
+class Solution {
+    public String reverseWords(String s) {
+        s=s+" ";
+        String t="";
+        int a=s.indexOf(" ");
+        for(int i=0;i<s.length();)
+        {
+           int j=s.indexOf(" ",i);
+           String word=s.substring(i,j);
+            t+=new StringBuilder(word).reverse().toString()+" ";
+            i=j+1;
+
+        }
+        return t.trim();
+    }
+}
