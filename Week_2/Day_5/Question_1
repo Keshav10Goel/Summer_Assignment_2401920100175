@@ -1,25 +1,19 @@
 class Solution {
-    public boolean isPalindrome(String s) {
-        s=s.trim();
-        s=s.toLowerCase();
-        int st=0;
-        
-        char c1=' ',c2=' ';
-        int la=s.length()-1;
-        while(st<la)
-        {
-            
-            while(st<la && (!Character.isLetterOrDigit(s.charAt(st)))  )
-            st++;
-            
-            while(st<la && (!Character.isLetterOrDigit(s.charAt(la))))
-            la--;
-            if(s.charAt(st)!=s.charAt(la))
-                return false;
-            st++;
-            la--;
+    public List<List<String>> groupAnagrams(String[] strs) {
 
+        HashMap<String, List<String>> map = new HashMap<>();
+
+        for (String str : strs) {
+
+            char[] arr = str.toCharArray();
+            Arrays.sort(arr);
+
+            String key = new String(arr);
+
+            map.putIfAbsent(key, new ArrayList<>());
+            map.get(key).add(str);
         }
-    return true;
+
+        return new ArrayList<>(map.values());
     }
 }
